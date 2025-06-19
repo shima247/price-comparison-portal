@@ -91,13 +91,22 @@
     }
 
     .link {
-      display: inline-block;
-      padding: 8px 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 15px;
       background-color: #ffd54f;
       color: #333;
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .link img {
+      height: 20px;
+      width: 20px;
+      vertical-align: middle;
     }
 
     .link:hover {
@@ -123,17 +132,23 @@
       <div class="platform">
         <h3>Shopee</h3>
         <div id="shopeePrice" class="price">-</div>
-        <a id="shopeeLink" class="link" href="#" target="_blank">Go to Shopee</a>
+        <a id="shopeeLink" class="link" href="#" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Shopee_logo.svg" alt="Shopee"> Go to Shopee
+        </a>
       </div>
       <div class="platform">
         <h3>Lazada</h3>
         <div id="lazadaPrice" class="price">-</div>
-        <a id="lazadaLink" class="link" href="#" target="_blank">Go to Lazada</a>
+        <a id="lazadaLink" class="link" href="#" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Lazada_Logo.svg" alt="Lazada"> Go to Lazada
+        </a>
       </div>
       <div class="platform">
         <h3>TikTok Shop</h3>
         <div id="tiktokPrice" class="price">-</div>
-        <a id="tiktokLink" class="link" href="#" target="_blank">Go to TikTok</a>
+        <a id="tiktokLink" class="link" href="#" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg" alt="TikTok"> Go to TikTok
+        </a>
       </div>
     </div>
     <p class="note">✨ This is a mock demo. Integrate APIs for real-time data from Shopee, Lazada, or TikTok Shop.</p>
