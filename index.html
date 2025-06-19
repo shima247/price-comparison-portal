@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Price Comparison Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .search-box {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .search-box input {
+      width: 70%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px 0 0 5px;
+    }
+    .search-box button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+    .platforms {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .platform {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .platform h3 {
+      margin-top: 0;
+    }
+    .price {
+      font-size: 1.5em;
+      color: green;
+      margin: 10px 0;
+    }
+    .link {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #007BFF;
+    }
+    .link:hover {
+      text-decoration: underline;
+    }
+    .note {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: gray;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Online Price Comparison Portal</h1>
+    <div class="search-box">
+      <input id="searchInput" type="text" placeholder="Search for a product... (e.g. phone case)" />
+      <button onclick="comparePrices()">Compare</button>
+    </div>
+    <div class="platforms">
+      <div class="platform">
+        <h3>Shopee</h3>
+        <div id="shopeePrice" class="price">-</div>
+        <a id="shopeeLink" class="link" href="#" target="_blank">View on Shopee</a>
+      </div>
+      <div class="platform">
+        <h3>Lazada</h3>
+        <div id="lazadaPrice" class="price">-</div>
+        <a id="lazadaLink" class="link" href="#" target="_blank">View on Lazada</a>
+      </div>
+      <div class="platform">
+        <h3>TikTok Shop</h3>
+        <div id="tiktokPrice" class="price">-</div>
+        <a id="tiktokLink" class="link" href="#" target="_blank">View on TikTok</a>
+      </div>
+    </div>
+    <p class="note">Note: These are mock prices for demonstration. Integration with real APIs is required for live data.</p>
+  </div>
+
+  <script>
+    const mockData = {
+      "phone case": {
+        shopee: { price: "RM25.90", link: "https://shopee.com.my/product/phone-case" },
+        lazada: { price: "RM26.50", link: "https://lazada.com.my/product/phone-case" },
+        tiktok: { price: "RM24.99", link: "https://tiktok.com/shop/phone-case" },
+      },
+      "earbuds": {
+        shopee: { price: "RM129.00", link: "https://shopee.com.my/product/earbuds" },
+        lazada: { price: "RM135.00", link: "https://lazada.com.my/product/earbuds" },
+        tiktok: { price: "RM128.50", link: "https://tiktok.com/shop/earbuds" },
+      },
+      "power bank": {
+        shopee: { price: "RM49.90", link: "https://shopee.com.my/product/power-bank" },
+        lazada: { price: "RM52.00", link: "https://lazada.com.my/product/power-bank" },
+        tiktok: { price: "RM48.00", link: "https://tiktok.com/shop/power-bank" },
+      }
+    };
+
+    function comparePrices() {
+      const input = document.getElementById('searchInput').value.trim().toLowerCase();
+
+      if (mockData[input]) {
+        document.getElementById('shopeePrice').textContent = mockData[input].shopee.price;
+        document.getElementById('shopeeLink').href = mockData[input].shopee.link;
+
+        document.getElementById('lazadaPrice').textContent = mockData[input].lazada.price;
+        document.getElementById('lazadaLink').href = mockData[input].lazada.link;
+
+        document.getElementById('tiktokPrice').textContent = mockData[input].tiktok.price;
+        document.getElementById('tiktokLink').href = mockData[input].tiktok.link;
+      } else {
+        document.getElementById('shopeePrice').textContent = "Not found";
+        document.getElementById('lazadaPrice').textContent = "Not found";
+        document.getElementById('tiktokPrice').textContent = "Not found";
+
+        document.getElementById('shopeeLink').href = "#";
+        document.getElementById('lazadaLink').href = "#";
+        document.getElementById('tiktokLink').href = "#";
+      }
+    }
+  </script>
+</body>
+</html>
